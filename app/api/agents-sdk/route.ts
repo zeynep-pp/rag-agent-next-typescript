@@ -3,6 +3,7 @@ import { openai } from "@ai-sdk/openai";
 import { aisdk } from "@openai/agents-extensions";
 import { z } from "zod";
 import { RetrievalService } from "@/lib/retrieval";
+import { fetchConnectedPapers } from "@/lib/connectedPapersTool";
 
 interface AgentMessage {
   role: "user" | "assistant";
@@ -50,6 +51,17 @@ export async function POST(req: Request) {
             // Example analysis logic
             const analysisResult = documents.map(doc => `Analysis of ${doc}`);
             return `Analysis completed. Results: ${analysisResult.join(", ")}`;
+          },
+        }),
+        tool({
+          name: "fetchConnectedPapers",
+          description: "Fetch a visual overview of papers related to a specific field using Connected Papers",
+          parameters: z.object({
+            seedPaperId: z.string().describe("The ID of the seed paper to find related papers"),
+          }),
+          execute: async ({ seedPaperId }) => {
+            const papers = await fetchConnectedPapers(seedPaperId);
+            return papers;
           },
         }),
       ],

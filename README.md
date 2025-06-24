@@ -26,6 +26,23 @@ The `analyzeData` tool is designed to process and analyze data from documents re
    - Navigate to [http://localhost:3000/agent](http://localhost:3000/agent) to access the chat interface.
    - Test the analysis feature by inputting document data as described above.
 
+### User Input Example
+
+To trigger the `fetchConnectedPapers` function in the chat bot, the user can input a message like:
+
+- "Can you find related papers for this topic?"
+- "Show me related papers about machine learning."
+
+These inputs include the trigger phrase "related papers," which prompts the chat bot to fetch and display related academic papers.
+
+## New Tool: Connected Papers
+
+### fetchConnectedPapers
+
+- **Purpose**: Provides a visual overview of papers related to a specific field.
+- **Features**: Semantic relationship mapping, visualization of related papers.
+- **Usage**: Fetches connected papers using a seed paper ID to explore the research landscape.
+
 ## 🚀 Features
 
 - **AI-Powered Chat**: Interactive chat interface with GPT-4o-mini
@@ -150,8 +167,6 @@ VECTORIZE_PIPELINE_ID=aip0c318-344a-4721-a9e7-5526c96d9b49
    - Visit the main page to see the Next.js welcome screen
    - Go to `/vectorize` to access the RAG chat interface
    - Start asking questions about your vectorized documents
-
-
 
 ### Architecture Overview
 
